@@ -1,5 +1,6 @@
-# python-docker-template
-Python + Docker environment template.
+# selenium-python-docker-template
+Selenium + Python + Docker environment template.
+This uses chrome driver.
 
 ## Requirement
 
@@ -30,6 +31,12 @@ docker-compose exec app python app.py
 You can use jupyter for test.
 
 http://localhost:8888/
+
+### Example: selenium env
+
+- Selenium Driver: http://localhost:4444
+- noVNC Server: http://localhost:7900
+  - default password: secret
 
 
 ## Licence

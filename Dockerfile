@@ -1,14 +1,9 @@
-FROM python:3.12.2
+FROM python:3.11.5
 
-RUN apt-get update -y --fix-missing \
-    && apt-get install -y --no-install-recommends \
-    sudo \
-    vim \
-    git \
-    curl \
-    wget \
-    less \
-    locate
+ENV PYTHONIOENCODING utf-8
+ENV TZ="Asia/Tokyo"
+ENV LANG=C.UTF-8
+ENV LANGUAGE=en_US:en_US
 
 WORKDIR /app
 

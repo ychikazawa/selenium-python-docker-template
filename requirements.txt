@@ -1,4 +1,6 @@
-numpy
-pandas
+selenium
 jupyter
-tqdm
+requests
+BeautifulSoup4
+joblib
+chromedriver-binary==122.*

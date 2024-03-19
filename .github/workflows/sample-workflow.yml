@@ -1,7 +1,7 @@
 name: sample workflow
 
 on:
-  push:
+  # push:
   # schedule:
   #   - cron: '58 01 20 * *'
   workflow_dispatch:
@@ -28,7 +28,7 @@ jobs:
         run: |
           sudo apt-get install fonts-ipafont fonts-ipaexfont
 
-      - name: Run Auto Reservator
+      - name: Run python script
         run:  |
           cd app
           python app.py --driver_type 'chrome'

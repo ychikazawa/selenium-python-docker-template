@@ -1,0 +1,42 @@
+name: sample workflow
+
+on:
+  push:
+  # schedule:
+  #   - cron: '58 01 20 * *'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Set up Python 3.11.5
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.11.5
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Install Japanese
+        run: |
+          sudo apt-get install fonts-ipafont fonts-ipaexfont
+
+      - name: Run Auto Reservator
+        run:  |
+          cd app
+          python app.py
+        env:
+          TZ: 'Asia/Tokyo'    
+
+      - name: Upload screenshot
+        uses: actions/upload-artifact@v2
+        with:
+          name: logs
+          path: app/log

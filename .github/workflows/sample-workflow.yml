@@ -1,7 +1,7 @@
 name: sample workflow
 
 on:
-  # push:
+  push:
   # schedule:
   #   - cron: '58 01 20 * *'
   workflow_dispatch:
@@ -9,6 +9,11 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    services:
+      selenium:
+        image: selenium/standalone-chrome
+        ports:
+          - 4444:4444
 
     steps:
       - name: Checkout
@@ -31,9 +36,10 @@ jobs:
       - name: Run python script
         run:  |
           cd app
-          python app.py --driver_type 'chrome'
+          python app.py
         env:
           TZ: 'Asia/Tokyo'    
+          SELENIUM_URL: http://localhost:4444/wd/hub
 
       - name: Upload screenshot
         uses: actions/upload-artifact@v4

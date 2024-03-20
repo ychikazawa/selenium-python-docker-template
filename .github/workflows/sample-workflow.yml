@@ -29,10 +29,6 @@ jobs:
           pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Install Japanese
-        run: |
-          sudo apt-get install fonts-ipafont fonts-ipaexfont
-
       - name: Run python script
         run:  |
           cd app
